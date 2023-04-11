@@ -2,18 +2,18 @@
 session_start();
 require("./conf/conf_site.php");
 $erreur = '';
-if (!empty($_POST["name"]) && !empty($_POST["mdp"]) && !empty($_POST["f-name"]) && !empty($_POST["mail"])) {
+if (!empty($_POST["name"]) && !empty($_POST["password"]) && !empty($_POST["f-name"]) && !empty($_POST["mail"])) {
     $name = $_POST["name"];
     $fname = $_POST["f-name"];
-    $mdp = $_POST["mdp"];
+    $password = $_POST["password"];
     $mail = $_POST["mail"];
-    $mdp = hash('sha256', $_POST["mdp"]);
+    $password = hash('sha256', $_POST["password"]);
 
-    $info_users = $bdd->prepare("SELECT * FROM users WHERE nom = ?");
+    $info_users = $bdd->prepare("SELECT * FROM users WHERE adresse_mail = ?");
     $info_users->execute(array($name));
     if ($info_users->rowCount() == 0) {
-        $register = $bdd->prepare("INSERT INTO users(adresse_mail,nom,prenom,mdp) VALUE(?,?,?,?)");
-        $register->execute(array($mail, $name, $fname, $mdp));
+        $register = $bdd->prepare("INSERT INTO users(adresse_mail,nom,prenom,password) VALUE(?,?,?,?)");
+        $register->execute(array($mail, $name, $fname, $password));
     } else {
         $erreur = 'L\'utilisateur existe déja !';
     }
@@ -41,7 +41,7 @@ if (!empty($_POST["name"]) && !empty($_POST["mdp"]) && !empty($_POST["f-name"]) 
             <input type="text" placeholder="Nom" name="name">
             <input type="text" placeholder="Prénom" name="f-name">
             <input type="mail" placeholder="mail" name="mail">
-            <input type="password" placeholder="Mot de passe" name="mdp">
+            <input type="password" placeholder="Mot de passe" name="password">
             <button type="submit">Send</button>
             <p style="color: red;"><?= $erreur ?></p>
             <a href="login.php">Login</a>

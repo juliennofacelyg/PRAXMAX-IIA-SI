@@ -2,12 +2,12 @@
 session_start();
 require("./conf/conf_site.php");
 $erreur = '';
-if (isset($_POST["user"]) && isset($_POST["mdp"])) {
-    $user = $_POST["user"];
+if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
+    $mail = $_POST["mail"];
     $mdp = $_POST["mdp"];
     $mdp = hash('sha256', $mdp);
-    $info_login = $bdd->prepare("SELECT * FROM users WHERE nom = ?");
-    $info_login->execute(array($user));
+    $info_login = $bdd->prepare("SELECT * FROM users WHERE adresse_mail = ?");
+    $info_login->execute(array($mail));
     if ($info_login->rowCount() > 0) {
         $user_info = $info_login->fetch();
         if ($mdp == $user_info["mdp"]) {
@@ -41,7 +41,7 @@ if (isset($_POST["user"]) && isset($_POST["mdp"])) {
     <div class="main-container">
     <form method="post">
         <h2>Login</h2>
-        <input type="text" placeholder="Nom" name="user">
+        <input type="text" placeholder="mail" name="mail">
         <input type="password"  placeholder="Mot de passe" name="mdp">
         <button type="submit">Continuer</button>
         <p style="color: red;"><?= $erreur ?></p>
