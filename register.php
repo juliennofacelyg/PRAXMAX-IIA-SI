@@ -11,8 +11,8 @@ if (!empty($_POST["name"]) && !empty($_POST["password"]) && !empty($_POST["f-nam
 
     $info_users = $bdd->prepare("SELECT * FROM users WHERE adresse_mail = ?");
     $info_users->execute(array($name));
-    if ($info_users->rowCount() == 0) {
-        $register = $bdd->prepare("INSERT INTO users(adresse_mail,nom,prenom,password) VALUE(?,?,?,?)");
+    if ($info_users->rowCount() > 0) {
+        $register = $bdd->prepare("INSERT INTO users(adresse_mail,nom,prenom,mdp) VALUE(?,?,?,?)");
         $register->execute(array($mail, $name, $fname, $password));
     } else {
         $erreur = 'L\'utilisateur existe déja !';
