@@ -15,6 +15,8 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
             $_SESSION["adresse_mail"] = $user_info["adresse_mail"];
             $_SESSION["nom"] = $user_info["nom"];
             $_SESSION["prenom"] = $user_info["prenom"];
+            $info_co = $bdd->prepare("update users(derniere_connexion) VALUES(?) WHERE adresse_mail = ?");
+            $info_co->execute(array(date('d m Y H:i'),$mail));
             header("Location: ./public/overview.php");
         }else{
             $erreur = "Le mdp ne correspond pas !";
