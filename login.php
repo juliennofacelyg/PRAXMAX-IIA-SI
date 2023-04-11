@@ -50,6 +50,7 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
         <button type="submit">Continuer</button>
         <p style="color: red;"><?= $erreur ?></p>
     </form>
+    <a href="public/blog.php">Retour au blog</a>
     <a href="register.php">Inscription</a>
     </div>
 </body>
