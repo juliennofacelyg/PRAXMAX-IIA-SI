@@ -37,7 +37,7 @@ $articles = $articleslist->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($articles as $article) : ?>
             <div class="container-blog">
                 <?php echo $article['contenue']; ?>
-                <img src="img/<?= $article['img'] ?>" alt="<?= $article['contenue']?>">
+                <img style="max-width: 500px;" src="img/<?= $article['img'] ?>" alt="<?= $article['contenue']?>">
             </div>
         <?php endforeach; ?>
     </body>
