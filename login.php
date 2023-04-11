@@ -34,15 +34,20 @@ if (isset($_POST["user"]) && isset($_POST["mdp"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="./asset/css/main.css">
 </head>
 
 <body>
-    <?= $erreur ?>
+    <div class="main-container">
     <form method="post">
-        <input type="text" name="user">
-        <input type="password" name="mdp">
-        <button type="submit">Send</button>
+        <h2>Login</h2>
+        <input type="text" placeholder="Nom" name="user">
+        <input type="password"  placeholder="Mot de passe" name="mdp">
+        <button type="submit">Continuer</button>
+        <p style="color: red;"><?= $erreur ?></p>
     </form>
+    <a href="register.php">Inscription</a>
+    </div>
 </body>
 
 </html>
