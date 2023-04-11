@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 11 avr. 2023 à 11:39
+-- Généré le : mar. 11 avr. 2023 à 13:53
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `authentification`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `contenue` text NOT NULL,
+  `date_cree` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `img` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`id`, `contenue`, `date_cree`, `img`) VALUES
+(10, '<p>dqzndqz</p><p>d</p><p>qzd</p><h2>qzqzdqzdqz</h2><p>dqz</p>', '2023-04-11 13:32:28', '6435616e8e5d0.jpg');
 
 -- --------------------------------------------------------
 
@@ -45,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `adresse_mail`, `nom`, `prenom`, `mdp`, `creation`, `derniere_connexion`) VALUES
-(1, 'contact@admin.com', 'admin', 'admin', '057ba03d6c44104863dc7361fe4578965d1887360f90a0895882e58a6248fc86', '2023-04-11 12:25:13', '0000-00-00');
+(1, 'contact@admin.com', 'admin', 'admin', '057ba03d6c44104863dc7361fe4578965d1887360f90a0895882e58a6248fc86', '2023-04-11 12:25:13', '2023-04-11');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
