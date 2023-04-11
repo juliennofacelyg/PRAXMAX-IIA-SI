@@ -1,6 +1,7 @@
 <?php
+session_start();
 require("./conf/conf_site.php");
-
+$erreur = '';
 if (isset($_POST["user"]) && isset($_POST["mdp"])) {
     $user = $_POST["user"];
     $mdp = $_POST["mdp"];
@@ -11,19 +12,17 @@ if (isset($_POST["user"]) && isset($_POST["mdp"])) {
         $user_info = $info_login->fetch();
         if ($mdp == $user_info["mdp"]) {
             $_SESSION["id"] = $user_info["id"];
-            $_SESSION["adresse_mail"] = $user_info["addresse_mail"];
+            $_SESSION["adresse_mail"] = $user_info["adresse_mail"];
             $_SESSION["nom"] = $user_info["nom"];
             $_SESSION["prenom"] = $user_info["prenom"];
+            header("Location: ./public/overview.php");
         }else{
             $erreur = "Le mdp ne correspond pas !";
         }
     } else {
         $erreur = "L'utilisateur n'existe pas";
     }
-} else {
-    $erreur = "Merci de remplire tous les champs";
 }
-
 
 ?>
 
