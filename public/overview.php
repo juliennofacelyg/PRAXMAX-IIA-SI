@@ -1,5 +1,7 @@
 <?php 
-require('./modules/verif_login.php');
+session_start();
+require("../conf/conf_site.php");
+require('../modules/verif_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
