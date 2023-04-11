@@ -15,6 +15,7 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])) {
             $_SESSION["adresse_mail"] = $user_info["adresse_mail"];
             $_SESSION["nom"] = $user_info["nom"];
             $_SESSION["prenom"] = $user_info["prenom"];
+            $_SESSION["permission"] = $user_info["permission"];
             $info_co = $bdd->prepare("UPDATE users SET derniere_connexion = ? WHERE adresse_mail = ?");
             $date = date('Y-m-d H:i:s');
             $info_co->execute(array($date, $mail));
