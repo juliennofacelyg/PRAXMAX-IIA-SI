@@ -1,0 +1,64 @@
+/* Style général */
+body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.main-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 30px auto;
+    max-width: 400px;
+    padding: 30px;
+    display: grid;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="mail"] {
+    border-radius: 2px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 5px solid #007bff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="mail"]:focus {
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0069d9;
+}
+a {
+    text-align: center;
+}
