@@ -15,5 +15,12 @@ $ip = "";
 //////////////////////////////
 // DataBase PDO Connect     //
 //////////////////////////////
-$bdd = new PDO("mysql:host=$ip;dbname=$db;charset=utf8",$dbuser,$dbpass);
 
+
+
+try {
+    $bdd = new PDO("mysql:host=$ip;dbname=$db;charset=utf8",$dbuser,$dbpass);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Connection failed';
+}
