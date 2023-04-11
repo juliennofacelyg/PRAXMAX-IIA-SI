@@ -2,7 +2,12 @@
 session_start();
 require("../conf/conf_site.php");
 require('../modules/verif_login.php');
+if ($_SESSION["permission"] != 1) {
 
+  header("location:../login.php");
+}
+$articleslist = $bdd->query('SELECT * FROM articles');
+$articles = $articleslist->fetchAll(PDO::FETCH_ASSOC);
 if (!empty($_POST['editor']) && !empty($_FILES['image'])) {
   $content = $_POST['editor'];
   $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
@@ -44,6 +49,15 @@ if (!empty($_POST['editor']) && !empty($_FILES['image'])) {
       <button type="submit">Nouveau Poste</button>
     </form>
   </div>
+
+
+  <?php foreach ($articles as $article) : ?>
+    <div class="container-blog">
+      <?php echo $article['contenue']; ?>
+      <img style="max-width: 500px;" src="../public/img/<?= $article['img'] ?>" alt="<?= $article['contenue'] ?>">
+      <a href="s">Edit</a>
+    </div>
+  <?php endforeach; ?>
   <script>
     ClassicEditor
       .create(document.querySelector('#editor'))
